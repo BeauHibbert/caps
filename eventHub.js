@@ -1,7 +1,21 @@
 'use strict';
 
-const EventEmitter = require('events');
+const eventPool = require('../eventPool.js');
+const { onPickUp } = require('./createOrder/vendor');
+const { onDelivery } = require('./handleDelivery/driver');
+const logger = require('./lib/eventManager');
 
-const eventPool = new EventEmitter();
+module.exports = () => {
+  eventPool.on('PICKUP', onPickUp);
+  eventPool.on('DELIVERY', onDelivery);
+  eventPool.on('PICKUP', (payload) => {
+    logger('PICKUP', payload)
+  });
+  eventPool.on('IN TRANSIT', (payload) => {
+    logger('IN TRANSIT', payload)
+  });
 
-module.exports = eventPool;
+  eventPool.on('DELIVERY', (payload) => {
+    logger('DELIVERY', payload)
+  });
+};

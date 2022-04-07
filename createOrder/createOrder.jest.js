@@ -1,7 +1,7 @@
 'use strict';
 
 const createOrder = require('./');
-const eventPool = require('../eventHub.js');
+const eventPool = require('../eventPool.js');
 
 jest.mock('../eventHub.js', () => {
   return {
