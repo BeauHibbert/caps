@@ -16,8 +16,3 @@ module.exports = (storename) => {
   console.log('Thank you, ' + payload.customer);
 
 };
-
-
-// module.exports = (payload) => {
-//   console.log('Thank you, ' + payload.customer);
-// };
